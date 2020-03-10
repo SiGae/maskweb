@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>"마스크 위치"</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        {% for i in tem %}
+        <H6>-----------------------</H6>
+        가게명 : {{ i['name'] }}
+            <br />
+        주소 : {{ i['addr'] }}
+            <br />재고 :
+            {% if i['remain_stat'] == "empty" %}
+            1개 이하
+            {% elif i['remain_stat'] == "few" %}
+            2~29개
+            {% elif i['remain_stat'] == "some" %}
+            30~99
+            {% elif i['remain_stat'] == "plenty" %}
+            100개 이상
+            {% else %}
+            알 수 없음
+            {% endif %}
+            <br />
+        파악시점 : {{ i['created_at'] }}
+        {% endfor %}
+    </body>
+
+</html>
